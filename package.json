@@ -3,9 +3,12 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "homepage": "https://Vasanthan77.github.io/vasanthan-portfolio/",
   "scripts": {
+    "dev": "vite",
     "build": "vite build",
-    "dev": "vite"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
@@ -75,6 +78,7 @@
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^25.0.7",
     "@vitejs/plugin-react": "4.7.0",
+    "gh-pages": "^6.3.0",
     "tailwindcss": "^4.1.18",
     "vite": "6.3.5"
   },
