@@ -1,0 +1,271 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
+
+/* 1. Define your theme using the v4 @theme directive */
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-secondary: hsl(var(--secondary));
+  --color-border: hsl(var(--border));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --font-sans: var(--font-family);
+}
+
+/* 2. Global Base Styles */
+@layer base {
+  :root {
+    --background: 210 50% 98%;
+    /* Brilliant White/Blue Hint */
+    --foreground: 222 47% 11%;
+    --primary: 221 83% 53%;
+    /* Sapphire Blue */
+    --secondary: 215 90% 45%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 90%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --border: 214.3 31.8% 90%;
+    --ring: 221 83% 53%;
+    --radius: 0.75rem;
+    --font-family: "Outfit", sans-serif;
+  }
+
+  .dark {
+    --background: 220 30% 3%;
+    /* Deeper Black */
+    --foreground: 180 100% 75%;
+    --primary: 180 100% 50%;
+    /* Electric Blue */
+    --muted: 180 100% 8%;
+    --muted-foreground: 180 100% 60%;
+    --accent: 180 100% 12%;
+    --accent-foreground: 180 100% 75%;
+    --border: 180 100% 15%;
+    --ring: 180 100% 50%;
+    --font-family: "Outfit", sans-serif;
+  }
+
+  /* GLASS MORPHISM UTILITY - Optimized */
+  .glass-morphism {
+    @apply backdrop-blur-sm border transition-all duration-300 will-change-transform;
+  }
+
+  .light .glass-morphism {
+    @apply bg-white/40 border-blue-50/30 shadow-blue-500/5;
+  }
+
+  .dark .glass-morphism {
+    @apply bg-black/30 border-white/5 shadow-black/20;
+  }
+
+  .dynamic .glass-morphism {
+    @apply bg-purple-900/10 border-purple-500/10 shadow-purple-500/5;
+  }
+
+  .dynamic {
+    --background: 260 40% 2%;
+    --foreground: 300 100% 90%;
+    --primary: 320 100% 60%;
+    --secondary: 280 100% 60%;
+    --accent: 190 100% 50%;
+    --muted: 280 40% 10%;
+    --muted-foreground: 300 40% 60%;
+    --border: 280 100% 15%;
+    --ring: 320 100% 60%;
+    --font-family: "Outfit", sans-serif;
+  }
+
+  /* 🔥 FIX 1: HIDE SYSTEM CURSOR 
+     This removes the double cursor effect so only your custom one shows. */
+  html,
+  body,
+  * {
+    cursor: none !important;
+    scroll-behavior: smooth;
+  }
+
+  /* 🔥 FIX 2: AUTOMATIC THEME COLORS
+     Ensures all text, icons, and buttons inherit the theme colors unless overridden. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  a,
+  button,
+  i,
+  svg,
+  input,
+  textarea {
+    @apply transition-colors duration-200;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+
+  h2,
+  .section-title {
+    @apply font-bold text-foreground;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    @apply text-foreground overflow-x-hidden font-sans bg-transparent;
+  }
+
+  /* NEON RING GLOW UTILITY - Perfectly Circular & Tight */
+  .neon-ring {
+    @apply relative flex items-center justify-center;
+  }
+
+  .neon-ring::before {
+    content: '';
+    @apply absolute w-[105%] h-[105%] rounded-full border-[8px] border-primary opacity-100 transition-all duration-500 -z-10;
+    box-shadow:
+      0 0 30px hsl(var(--primary) / 0.5),
+      0 0 60px hsl(var(--primary) / 0.3);
+  }
+
+  .dynamic .neon-ring::before {
+    border-color: transparent;
+    background-image: linear-gradient(to right, #c084fc, #f472b6, #22d3ee);
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    border: 8px solid transparent;
+    animation: none;
+    box-shadow:
+      0 0 20px rgba(192, 132, 252, 0.4),
+      0 0 40px rgba(244, 114, 182, 0.2);
+  }
+
+  .neon-ring::after {
+    content: '';
+    @apply absolute w-[112%] h-[112%] rounded-full border-[1px] border-primary/20 opacity-30 transition-all duration-700 animate-[pulse_4s_infinite] -z-10;
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.2);
+  }
+
+  .dynamic .neon-ring::after {
+    border-color: rgba(244, 114, 182, 0.2);
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.1);
+  }
+
+  .neon-ring:hover::before {
+    @apply scale-105 opacity-100;
+    box-shadow:
+      0 0 40px hsl(var(--primary)),
+      0 0 80px hsl(var(--primary)),
+      inset 0 0 40px hsl(var(--primary));
+  }
+
+  /* RAINBOW TEXT FOR DYNAMIC THEME */
+  .animate-rainbow-text {
+    animation: rainbow-text 5s linear infinite;
+  }
+
+  @keyframes rainbow-text {
+
+    0%,
+    100% {
+      color: #c084fc;
+    }
+
+    33% {
+      color: #f472b6;
+    }
+
+    66% {
+      color: #22d3ee;
+    }
+  }
+
+  /* STONE TEXTURE FOR SPLASH */
+  .bg-stone-texture {
+    background-color: #2c2c2c;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 10%),
+      radial-gradient(circle at 70% 60%, rgba(0, 0, 0, 0.2) 0%, transparent 20%),
+      linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a),
+      linear-gradient(-45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a);
+    background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  }
+}
+
+/* 3. Splash Screen (remains the same) */
+.splash {
+  position: fixed;
+  inset: 0;
+  background: hsl(var(--background));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+@layer utilities {
+
+  /* Wave/Shake Hand Animation */
+  @keyframes wave {
+    0% {
+      transform: rotate(0.0deg)
+    }
+
+    10% {
+      transform: rotate(14.0deg)
+    }
+
+    20% {
+      transform: rotate(-8.0deg)
+    }
+
+    30% {
+      transform: rotate(14.0deg)
+    }
+
+    40% {
+      transform: rotate(-4.0deg)
+    }
+
+    50% {
+      transform: rotate(10.0deg)
+    }
+
+    60% {
+      transform: rotate(0.0deg)
+    }
+
+    100% {
+      transform: rotate(0.0deg)
+    }
+  }
+
+  /* Rotation for the background blob */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.animate-wave {
+  animation: wave 2.5s infinite;
+}
+
+/* ... Rest of your splash and animation code ... */
