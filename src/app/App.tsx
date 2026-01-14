@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// 1. Change BrowserRouter to HashRouter
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useLayoutEffect } from "react";
 import { AnimatePresence } from "motion/react";
 import Index from "../pages/Index";
@@ -33,14 +34,17 @@ const App = () => {
         <div className={`relative min-h-screen transition-all duration-1000 ${isLoading ? "blur-md pointer-events-none" : "blur-0"}`}>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          
+          {/* 2. Using Router (HashRouter) instead of BrowserRouter */}
+          <Router>
             <ScrollDownFloating />
             <ThemeToggle currentTheme={theme} onThemeChange={setTheme} />
             <Routes>
               <Route path="/" element={<Index />} />
+              {/* This catches everything else and shows your NotFound page */}
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
+          </Router>
         </div>
 
         <AnimatePresence>
