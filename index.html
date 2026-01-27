@@ -3,31 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="./assets/favicon.png" />
+
     <title>Vasanthan - Motion Studio | Creative Developer & Designer</title>
+
+    <!-- Theme preload -->
     <script>
-        (function () {
-          try {
-            const theme = localStorage.getItem('theme');
-            if (theme === 'dark') {
-              document.documentElement.classList.add('dark');
-            } else if (theme === 'light') {
-              document.documentElement.classList.remove('dark');
-            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-              document.documentElement.classList.add('dark');
-            }
-          } catch (e) {
-            // ignore
+      (function () {
+        try {
+          const theme = localStorage.getItem("theme");
+          if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+          } else if (theme === "light") {
+            document.documentElement.classList.remove("dark");
+          } else if (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+          ) {
+            document.documentElement.classList.add("dark");
           }
-        })();
-      </script>
-    <meta name="description" content="Explore innovative motion graphics, creative design, and interactive experiences" />
+        } catch (e) {}
+      })();
+    </script>
+
+    <meta
+      name="description"
+      content="Explore innovative motion graphics, creative design, and interactive experiences"
+    />
     <script type="module" crossorigin src="/vasanthan-s-portfolio/assets/index-Dhzah2Kz.js"></script>
     <link rel="stylesheet" crossorigin href="/vasanthan-s-portfolio/assets/index-BSEhaaX5.css">
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
+
+    <!-- ✅ IMPORTANT FIX: relative path -->
   </body>
 </html>
-  
