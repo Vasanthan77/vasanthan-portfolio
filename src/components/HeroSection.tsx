@@ -31,7 +31,7 @@ const HeroSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-12 overflow-hidden bg-transparent"
+      className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-12 overflow-hidden bg-transparent py-20 lg:py-0"
     >
       {/* --- LEFT SOCIAL BAR: Theme-Responsive Colors --- */}
       <div className="hidden lg:flex flex-col gap-8 fixed left-8 top-1/2 -translate-y-1/2 z-40">

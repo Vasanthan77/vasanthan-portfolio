@@ -5,7 +5,7 @@ import { defineConfig } from "vite"
 
 export default defineConfig({
   // Add the base path for GitHub Pages
-  base: '/vasanthan-portfolio/', 
+  base: '/vasanthan-s-portfolio/', 
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
