@@ -16,9 +16,9 @@ const ThemeToggle = ({ currentTheme, onThemeChange }: ThemeToggleProps) => {
   // Pulley positions (Upside-down triangle from latest sketch)
   const getPos = (id: string) => {
     switch (id) {
-      case "light": return { x: "-36px", y: "-22px" };    // Top Left (Sun)
-      case "dark": return { x: "36px", y: "-22px" };     // Top Right (Moon)
-      case "dynamic": return { x: "0px", y: "38px" };    // Bottom (Sparkles)
+      case "light": return { x: "-26px", y: "-12px" };    // Top Left (Sun)
+      case "dark": return { x: "30px", y: "-18px" };     // Top Right (Moon)
+      case "dynamic": return { x: "0px", y: "30px" };    // Bottom (Sparkles)
       default: return { x: "0px", y: "0px" };
     }
   };
@@ -34,7 +34,7 @@ const ThemeToggle = ({ currentTheme, onThemeChange }: ThemeToggleProps) => {
 
   return (
     <div className="fixed top-8 right-8 z-[1000] flex items-center justify-center">
-      <div className="relative w-32 h-32 flex items-center justify-center">
+      <div className="relative w-22 h-22 flex items-center justify-center">
         {/* Belt-Pulley Wireframe (Based on latest sketch) */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="0 0 128 128">
           {/* Outer Belt Path */}
@@ -42,13 +42,13 @@ const ThemeToggle = ({ currentTheme, onThemeChange }: ThemeToggleProps) => {
             d="M 28,42 L 100,42 L 64,102 Z"
             fill="none"
             stroke={getGlowColor(currentTheme)}
-            strokeWidth="1.5"
+            strokeWidth="4.5"
             strokeLinecap="round"
             strokeLinejoin="round"
             className="transition-all duration-500"
             style={{
               filter: `drop-shadow(0 0 4px ${getGlowColor(currentTheme)})`,
-              strokeOpacity: currentTheme === "light" ? 0.8 : 1
+              strokeOpacity: currentTheme === "light" ? 0.9 : 2
             }}
           />
 
@@ -57,8 +57,8 @@ const ThemeToggle = ({ currentTheme, onThemeChange }: ThemeToggleProps) => {
             d="M 38,48 L 90,48 L 64,90 Z"
             fill="none"
             stroke={getGlowColor(currentTheme)}
-            strokeWidth="1"
-            className="opacity-40 transition-all duration-500"
+            strokeWidth="3"
+            className="opacity-60 transition-all duration-800"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
